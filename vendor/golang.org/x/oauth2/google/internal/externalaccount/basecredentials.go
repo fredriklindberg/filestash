@@ -163,15 +163,13 @@ type format struct {
 }
 
 // CredentialSource stores the information necessary to retrieve the credentials for the STS exchange.
-// One field amongst File, URL, and Executable should be filled, depending on the kind of credential in question.
+// Either the File or the URL field should be filled, depending on the kind of credential in question.
 // The EnvironmentID should start with AWS if being used for an AWS credential.
 type CredentialSource struct {
 	File string `json:"file"`
 
 	URL     string            `json:"url"`
 	Headers map[string]string `json:"headers"`
-
-	Executable *ExecutableConfig `json:"executable"`
 
 	EnvironmentID               string `json:"environment_id"`
 	RegionURL                   string `json:"region_url"`
@@ -181,13 +179,7 @@ type CredentialSource struct {
 	Format                      format `json:"format"`
 }
 
-type ExecutableConfig struct {
-	Command       string `json:"command"`
-	TimeoutMillis *int   `json:"timeout_millis"`
-	OutputFile    string `json:"output_file"`
-}
-
-// parse determines the type of CredentialSource needed.
+// parse determines the type of CredentialSource needed
 func (c *Config) parse(ctx context.Context) (baseCredentialSource, error) {
 	if len(c.CredentialSource.EnvironmentID) > 3 && c.CredentialSource.EnvironmentID[:3] == "aws" {
 		if awsVersion, err := strconv.Atoi(c.CredentialSource.EnvironmentID[3:]); err == nil {
@@ -213,8 +205,6 @@ func (c *Config) parse(ctx context.Context) (baseCredentialSource, error) {
 		return fileCredentialSource{File: c.CredentialSource.File, Format: c.CredentialSource.Format}, nil
 	} else if c.CredentialSource.URL != "" {
 		return urlCredentialSource{URL: c.CredentialSource.URL, Headers: c.CredentialSource.Headers, Format: c.CredentialSource.Format, ctx: ctx}, nil
-	} else if c.CredentialSource.Executable != nil {
-		return CreateExecutableCredential(ctx, c.CredentialSource.Executable, c)
 	}
 	return nil, fmt.Errorf("oauth2/google: unable to parse credential source")
 }

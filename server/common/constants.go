@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 )
 
+//go:generate go run ../generator/constants.go
 const (
 	LOG_PATH          = "data/state/log/"
 	CONFIG_PATH       = "data/state/config/"
