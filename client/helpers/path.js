@@ -36,14 +36,6 @@ export function absoluteToRelative(from, to) {
     return r;
 }
 
-export function currentShare() {
-    return findParams("share");
-}
-
-export function findParams(p) {
-    return new window.URL(location.href).searchParams.get(p) || "";
-}
-
 export function appendShareToUrl(link) {
     let url = new window.URL(location.href);
     const share = url.searchParams.get("share");
