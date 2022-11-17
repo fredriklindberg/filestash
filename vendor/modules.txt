@@ -131,7 +131,7 @@ github.com/kr/fs
 ## explicit
 # github.com/mattn/go-isatty v0.0.16
 github.com/mattn/go-isatty
-# github.com/mattn/go-sqlite3 v2.0.2+incompatible
+# github.com/mattn/go-sqlite3 v1.14.16
 ## explicit
 github.com/mattn/go-sqlite3
 # github.com/mickael-kerjean/net v0.0.0-20191120063050-2457c043ba06
@@ -185,6 +185,14 @@ github.com/tidwall/pretty
 # github.com/tidwall/sjson v1.0.4
 ## explicit
 github.com/tidwall/sjson
+# github.com/tredoe/osutil v1.0.6
+## explicit
+github.com/tredoe/osutil/user/crypt
+github.com/tredoe/osutil/user/crypt/apr1_crypt
+github.com/tredoe/osutil/user/crypt/common
+github.com/tredoe/osutil/user/crypt/md5_crypt
+github.com/tredoe/osutil/user/crypt/sha256_crypt
+github.com/tredoe/osutil/user/crypt/sha512_crypt
 # github.com/wayneashleyberry/terminal-dimensions v1.1.0
 ## explicit
 github.com/wayneashleyberry/terminal-dimensions
@@ -207,7 +215,7 @@ go.opencensus.io/trace
 go.opencensus.io/trace/internal
 go.opencensus.io/trace/propagation
 go.opencensus.io/trace/tracestate
-# golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871
+# golang.org/x/crypto v0.0.0-20220128200615-198e4374d7ed
 ## explicit
 golang.org/x/crypto/acme
 golang.org/x/crypto/acme/autocert

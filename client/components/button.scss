@@ -1,7 +1,7 @@
 button{
     border: none;
     margin: 0;
-    padding: 5px;
+    padding: 6px;
     width: 100%;
     display: inline-block;
     outline: none;
@@ -17,10 +17,17 @@ button{
     }
     &.emphasis{
         background: var(--emphasis);
-        color: white
+        color: white;
     }
     &.dark{
         background: var(--dark);
         color: white;
+    }
+}
+
+.touch-no button {
+    &.dark:hover, &.emphasis:hover, &.primary:hover {
+        filter: brightness(95%);
+        transition: 0.2s ease all;
     }
 }

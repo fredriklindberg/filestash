@@ -15,7 +15,7 @@ require (
 	github.com/h2non/bimg v1.1.5
 	github.com/hirochachacha/go-smb2 v1.0.2
 	github.com/kr/pretty v0.3.0 // indirect
-	github.com/mattn/go-sqlite3 v2.0.2+incompatible
+	github.com/mattn/go-sqlite3 v1.14.16
 	github.com/mickael-kerjean/net v0.0.0-20191120063050-2457c043ba06
 	github.com/mitchellh/hashstructure v1.0.0
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
@@ -27,8 +27,9 @@ require (
 	github.com/secsy/goftp v0.0.0-20200609142545-aa2de14babf4 // indirect
 	github.com/tidwall/gjson v1.13.0
 	github.com/tidwall/sjson v1.0.4
+	github.com/tredoe/osutil v1.0.6
 	github.com/wayneashleyberry/terminal-dimensions v1.1.0 // indirect
-	golang.org/x/crypto v0.0.0-20211117183948-ae814b36b871
+	golang.org/x/crypto v0.0.0-20220128200615-198e4374d7ed
 	golang.org/x/image v0.0.0-20210622092929-e6eecd499c2c
 	golang.org/x/net v0.0.0-20220425223048-2871e0cb64e4
 	golang.org/x/oauth2 v0.0.0-20220411215720-9780585627b5
