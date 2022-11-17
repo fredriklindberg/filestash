@@ -2,7 +2,7 @@
 # Stage 1: Define base image
 #
 
-FROM debian:unstable-slim AS base
+FROM debian:bookworm-slim AS base
 
 #
 # Stage 2: Build base image
