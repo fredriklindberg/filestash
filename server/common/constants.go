@@ -18,15 +18,12 @@ const (
 	COOKIE_NAME_ADMIN = "admin"
 	COOKIE_PATH_ADMIN = "/admin/api/"
 	COOKIE_PATH       = "/api/"
-	FILE_INDEX        = "./data/public/index.html"
-	FILE_ASSETS       = "./data/public/"
 	URL_SETUP         = "/admin/setup"
 )
 
 func init() {
 	os.MkdirAll(filepath.Join(GetCurrentDir(), LOG_PATH), os.ModePerm)
 	os.MkdirAll(filepath.Join(GetCurrentDir(), FTS_PATH), os.ModePerm)
-	os.MkdirAll(filepath.Join(GetCurrentDir(), CONFIG_PATH), os.ModePerm)
 	os.RemoveAll(filepath.Join(GetCurrentDir(), TMP_PATH))
 	os.MkdirAll(filepath.Join(GetCurrentDir(), TMP_PATH), os.ModePerm)
 }

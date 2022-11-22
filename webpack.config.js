@@ -11,7 +11,7 @@ const config = {
         app: path.join(__dirname, "client", "index.js"),
     },
     output: {
-        path: path.join(__dirname, "dist", "data", "public"),
+        path: path.join(__dirname, "server", "ctrl", "static", "www"),
         publicPath: "/",
         filename: "assets/js/[name]_[chunkhash].js",
         chunkFilename: "assets/js/chunk_[name]_[id]_[chunkhash].js",
@@ -73,7 +73,8 @@ const config = {
             { from: "assets/fonts/*" },
         ], { context: path.join(__dirname, "client") }),
         new CopyWebpackPlugin([
-            { from: "node_modules/pdfjs-dist/", to: "assets/vendor/pdfjs/2.6.347/" },
+            { from: "node_modules/pdfjs-dist/build/*.js", to: "assets/vendor/pdfjs/2.6.347/build/" },
+            { from: "node_modules/pdfjs-dist/cmaps/", to: "assets/vendor/pdfjs/2.6.347/cmaps/" },
         ]),
         // new BundleAnalyzerPlugin()
     ],
