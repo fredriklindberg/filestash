@@ -83,6 +83,7 @@ COPY .git/ ./.git/
 #
 # Build backend
 #
+COPY --from=build-frontend /src/server/ctrl/static/www server/ctrl/static/www
 
 RUN go generate -x ./server/...
 
@@ -154,9 +155,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
+RUN mkdir -p /app/data
 COPY --from=build-libtranscode /deps/libtranscode.so /usr/local/lib/libtranscode.so
 COPY --from=build-libresize /deps/libresize.so /usr/local/lib/libresize.so
-COPY --from=build-frontend /src/dist/data /app/data
+COPY --from=build-frontend /src/dist/data/state /app/data/state
 COPY --from=build-backend /src/dist/filestash /app/filestash
 
 RUN \
