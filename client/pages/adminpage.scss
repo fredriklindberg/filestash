@@ -47,6 +47,7 @@
                 @media screen and (max-width: 550px) {
                     display: block;
                     .nothing{ display: none; }
+                    input[type="checkbox"] { top: -7px; }
                 }
                 > span{
                     white-space: nowrap;
@@ -106,6 +107,19 @@
             &[readonly]{
                 background: var(--dark);
                 color: var(--light);
+            }
+            &:not([readonly]):hover, &:not([readonly])focus {
+                background: rgba(0,0,0,0.07);
+            }
+        }
+        .formbuilder_password {
+            img.component_icon {
+                background: rgba(0, 0, 0, 0.05);
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                padding-right: 5px;
+                border: none;
+                height: 22px;
             }
         }
     }
