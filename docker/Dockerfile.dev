@@ -12,7 +12,7 @@ FROM base AS build-image
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y \
     golang npm curl libglib2.0-dev libpangoft2-1.0-0 make git \
-    curl make gcc-10 g++10 xz-utils pkg-config python3-pip autoconf libtool unzip python-setuptools cmake git \
+    curl make gcc-10 g++10 xz-utils pkg-config python3-pip python2 autoconf libtool unzip cmake git \
     libraw-dev libjpeg-dev libgcc-10-dev libvips-dev liblcms2-dev
 
 ARG version
