@@ -19,7 +19,7 @@ import (
 )
 
 const (
-	HLS_SEGMENT_LENGTH = 10
+	HLS_SEGMENT_LENGTH = 30
 	CLEAR_CACHE_AFTER  = 12
 	VideoCachePath     = "data/cache/video/"
 )
@@ -192,8 +192,18 @@ func hls_transcode(ctx *App, res http.ResponseWriter, req *http.Request) {
 		"-vcodec", "libx264",
 		"-preset", "veryfast",
 		"-acodec", "aac",
+		"-ab", "128k",
+		"-ac", "2",
 		"-pix_fmt", "yuv420p",
-		"-x264opts:0", "subme=0:me_range=4:rc_lookahead=10:me=dia:no_chroma_me:8x8dct=0:partitions=none",
+		"-x264opts", strings.Join([]string{
+			"subme=0",
+			"me_range=4",
+			"rc_lookahead=10",
+			"me=dia",
+			"no_chroma_me",
+			"8x8dct=0",
+			"partitions=none",
+		}, ":"),
 		"-force_key_frames", fmt.Sprintf("expr:gte(t,n_forced*%d.000)", HLS_SEGMENT_LENGTH),
 		"-f", "ssegment",
 		"-segment_time", fmt.Sprintf("%d.00", HLS_SEGMENT_LENGTH),
@@ -206,7 +216,13 @@ func hls_transcode(ctx *App, res http.ResponseWriter, req *http.Request) {
 	var str bytes.Buffer
 	cmd.Stdout = res
 	cmd.Stderr = &str
-	_ = cmd.Run()
+	err = cmd.Run()
+	if err != nil {
+		Log.Error("plg_video_transcoder::ffmpeg::run '%s'", err.Error())
+	}
+	if str.String() != "" {
+		Log.Debug("plg_video_transcoder::ffmpeg::stderr %s", str.String())
+	}
 }
 
 type FFProbeData struct {
